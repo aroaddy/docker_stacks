@@ -1,1 +1,31 @@
-
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: 1000:1000 
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - /mnt/Code/DOCKER/volumes/jellyfin/config:/config
+      - /mnt/Code/DOCKER/volumes/jellyfin/cache:/cache
+      - /mnt/Code/DOCKER/volumes/jellyfin/data:/var/lib/jellyfin
+      - /mnt/Code/DOCKER/volumes/jellyfin/log:/log
+      - /mnt/Media:/mnt/Media 
+    devices:
+      - /dev/dri:/dev/dri
+      
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - PLEX_CLAIM= # Get from https://plex.tv
+    volumes:
+      - /mnt/Code/DOCKER/volumes/plex/config:/config
+      - /mnt/Media:/media
+    devices:
+      - /dev/dri:/dev/dri # Passes through the entire iGPU directory
+    restart: unless-stopped
