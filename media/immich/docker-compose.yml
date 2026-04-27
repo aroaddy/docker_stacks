@@ -16,7 +16,7 @@ services:
       DB_DATABASE_NAME: ${DB_DATABASE_NAME}
     depends_on:
       - redis
-      - database
+      - immich_postgres
     restart: always
     healthcheck:
       disable: false
