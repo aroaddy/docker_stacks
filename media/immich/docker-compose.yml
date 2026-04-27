@@ -9,6 +9,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 2283:2283
+    environment:
+      DB_HOSTNAME:  ${DB_HOSTNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_DATABASE_NAME: ${DB_DATABASE_NAME}
     depends_on:
       - redis
       - database
