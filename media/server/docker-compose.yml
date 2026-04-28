@@ -22,7 +22,7 @@ services:
       - PUID=1000
       - PGID=1000
       - VERSION=docker
-      - PLEX_CLAIM= # Get from https://plex.tv
+      - PLEX_CLAIM=claim-kXX6apZ4PnEk9zVdo9a6
     volumes:
       - /mnt/Code/DOCKER/volumes/plex/config:/config
       - /mnt/Media:/media
