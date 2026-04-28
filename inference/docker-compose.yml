@@ -13,16 +13,4 @@ services:
     volumes:
       - ${OPENWEBUI_DATA}:/app/backend/data
 
-  # ollama service for local LLMs
-  ollama:
-    image: intelanalytics/ipex-llm-inference-cpp-xpu:latest
-    container_name: ollama
-    env_file:
-      - ../stack.env
-    network_mode: host
-    devices:
-      - /dev/dri:/dev/dri
-    volumes:
-      - ${OLLAMA_DATA}:/root/.ollama
-      - ${MODEL_LOCATION}:/mnt/Models
-    restart: unless-stopped
+
