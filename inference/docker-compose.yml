@@ -11,23 +11,18 @@ services:
     ports:
       - "3001:8080"
     volumes:
-      - ./open-webui/data:/app/backend/data
+      - ${OPENWEBUI_DATA}:/app/backend/data
 
   # ollama service for local LLMs
   ollama:
-    image: ollama/ollama:latest
+    image: intelanalytics/ipex-llm-inference-cpp-xpu:latest
     container_name: ollama
     env_file:
       - ../stack.env
     network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
     volumes:
-      - ./ollama/data/:/root/.ollama
-      - /mnt/models/ollama/models/:/mnt/models
+      - ${OLLAMA_DATA}:/root/.ollama
+      - ${MODEL_LOCATION}:/mnt/Models
     restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
