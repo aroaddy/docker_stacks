@@ -5,7 +5,7 @@ services:
     container_name: open-webui
     restart: unless-stopped
     env_file:
-      - ./open-webui/.env
+      - ../stack.env
     depends_on:
       - ollama
     ports:
@@ -18,11 +18,10 @@ services:
     image: ollama/ollama:latest
     container_name: ollama
     env_file:
-      - ./ollama/.env
+      - ../stack.env
     network_mode: host
     volumes:
       - ./ollama/data/:/root/.ollama
-      #- ./ollama/models:/ollama-models
       - /mnt/models/ollama/models/:/mnt/models
     restart: unless-stopped
     deploy:
