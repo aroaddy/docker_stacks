@@ -6,8 +6,8 @@ services:
     restart: unless-stopped
     env_file:
       - ../stack.env
-    depends_on:
-      - ollama
+    #depends_on:
+      #- ollama
     ports:
       - "3001:8080"
     volumes:
