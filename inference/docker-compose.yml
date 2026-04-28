@@ -1,1 +1,34 @@
+services:
+    # open-webui service for LLM interaction
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:latest
+    container_name: open-webui
+    restart: unless-stopped
+    env_file:
+      - ./open-webui/.env
+    depends_on:
+      - ollama
+    ports:
+      - "3001:8080"
+    volumes:
+      - ./open-webui/data:/app/backend/data
 
+  # ollama service for local LLMs
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    env_file:
+      - ./ollama/.env
+    network_mode: host
+    volumes:
+      - ./ollama/data/:/root/.ollama
+      #- ./ollama/models:/ollama-models
+      - /mnt/models/ollama/models/:/mnt/models
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
