@@ -21,6 +21,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=Africa/Accra
       - VERSION=docker
       - PLEX_CLAIM=claim-kXX6apZ4PnEk9zVdo9a6
     volumes:
