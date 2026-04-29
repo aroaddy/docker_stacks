@@ -18,7 +18,7 @@ services:
     image: intelanalytics/ipex-llm-inference-cpp-xpu:latest
     container_name: ollama
     privileged: true
-    shm_size: '6gb'
+    shm_size: '16gb'
     env_file:
       - ../stack.env
     network_mode: host
