@@ -14,21 +14,19 @@ services:
       - ${OPENWEBUI_DATA}:/app/backend/data
 
   # ollama service for local LLMs
-  ollama:
-    image: intelanalytics/ipex-llm-inference-cpp-xpu:latest
-    container_name: ollama
-    privileged: true
-    shm_size: '16gb'
-    env_file:
-      - ../stack.env
-    network_mode: host
+  ollama-intel:
+    image: dachack/ollama-intel-docker:latest
+    container_name: ollama_intel
     ports:
       - "11434:11434"
     devices:
       - /dev/dri:/dev/dri
+    environment:
+      - DEVICE=gpu
+      - OLLAMA_NUM_GPU=999 # Forces all layers to offload to the iGPU
     volumes:
       - ${OLLAMA_DATA}:/root/.ollama
-      - ${MODEL_LOCATION}:/llm/models
+      - ${MODEL_LOCATION}:/mnt/Models
     restart: unless-stopped
-    stdin_open: true 
-    tty: true
+    
+
