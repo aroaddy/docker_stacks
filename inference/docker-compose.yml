@@ -17,6 +17,8 @@ services:
   ollama:
     image: intelanalytics/ipex-llm-inference-cpp-xpu:latest
     container_name: ollama
+    privileged: true
+    shm_size: '6gb'
     env_file:
       - ../stack.env
     network_mode: host
@@ -26,3 +28,5 @@ services:
       - ${OLLAMA_DATA}:/root/.ollama
       - ${MODEL_LOCATION}:/mnt/Models
     restart: unless-stopped
+    stdin_open: true 
+    tty: true
