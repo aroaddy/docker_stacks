@@ -26,7 +26,7 @@ services:
       - PLEX_CLAIM=claim-kXX6apZ4PnEk9zVdo9a6
     volumes:
       - /mnt/Code/DOCKER/volumes/plex/config:/config
-      - /mnt/Media:/mnt/Media/
+      - /mnt/Media:/shared
     devices:
       - /dev/dri:/dev/dri # Passes through the entire iGPU directory
     restart: unless-stopped
