@@ -14,7 +14,7 @@ services:
       - ${OPENWEBUI_DATA}:/app/backend/data
 
   # ollama service for local LLMs
-  ollama-intel:
+  ollama:
     image: dachack/ollama-intel-docker:latest
     container_name: ollama_intel
     ports:
