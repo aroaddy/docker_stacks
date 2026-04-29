@@ -28,7 +28,7 @@ services:
       - /dev/dri:/dev/dri
     volumes:
       - ${OLLAMA_DATA}:/root/.ollama
-      - ${MODEL_LOCATION}:/mnt/Models
+      - ${MODEL_LOCATION}:/root/.ollama/models
     restart: unless-stopped
     stdin_open: true 
     tty: true
