@@ -8,7 +8,7 @@ services:
       - ../stack.env
     #depends_on:
     #  - ollama
-    network_mode: host
+    network_mode: bridge
     ports:
       - "3001:8080"
     volumes:
