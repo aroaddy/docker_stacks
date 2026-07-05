@@ -6,10 +6,10 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - /mnt/Code/DOCKER/volumes/jellyfin/config:/config
-      - /mnt/Code/DOCKER/volumes/jellyfin/cache:/cache
-      - /mnt/Code/DOCKER/volumes/jellyfin/data:/var/lib/jellyfin
-      - /mnt/Code/DOCKER/volumes/jellyfin/log:/log
+      - /mnt/Docker/volumes/jellyfin/config:/config
+      - /mnt/Docker/volumes/jellyfin/cache:/cache
+      - /mnt/Docker/volumes/jellyfin/data:/var/lib/jellyfin
+      - /mnt/Docker/volumes/jellyfin/log:/log
       - /mnt/Media:/mnt/Media 
     devices:
       - /dev/dri:/dev/dri
