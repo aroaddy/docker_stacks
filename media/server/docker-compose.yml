@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     image: ghcr.io/blakeblackshear/frigate:stable
     shm_size: "128mb" # Increase if you have multiple 4K/2K cameras
+    network_mode: host
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128 # Passes the iGPU into the Docker container
     volumes:
@@ -15,11 +16,6 @@ services:
         target: /tmp/cache
         tmpfs:
           size: 1000000000
-    ports:
-      - "8971:8971"
-      - "8554:8554"
-      - "8555:8555"
-      - "8555:8555/udp"
     environment:
       FRIGATE_RTSP_PASSWORD: "Oka!1994"
       
