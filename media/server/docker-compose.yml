@@ -1,4 +1,28 @@
 services:
+  frigate:
+    container_name: frigate
+    privileged: true
+    restart: unless-stopped
+    image: ghcr.io/blakeblackshear/frigate:stable
+    shm_size: "128mb" # Increase if you have multiple 4K/2K cameras
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128 # Passes the iGPU into the Docker container
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/Docker/volumes/frigate/config:/config
+      - /mnt/Media/Frigate:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    ports:
+      - "8971:8971"
+      - "8554:8554"
+      - "8555:8555"
+      - "8555:8555/udp"
+    environment:
+      FRIGATE_RTSP_PASSWORD: "Oka!1994"
+      
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
