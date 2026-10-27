@@ -1,4 +1,20 @@
 services:
+  v380-decoder:
+    image: felipemarques/camera-v380decoder:latest
+    container_name: v380-decoder
+    restart: unless-stopped
+    ports:
+      - "8555:8554"  # RTSP video stream
+      - "8000:8000"  # ONVIF PTZ control port
+      - "8081:8080"  # Expose the Web UI on host port 8081
+    environment:
+      - CAMERA_IP=192.168.100.214      
+      - CAMERA_PORT=8800            
+      - CAMERA_USERNAME=aroaddy@gmail.com
+      - CAMERA_PASSWORD=Okai1994
+      - ENABLE_API=true             # 🌟 CRITICAL: Enables the Web UI & REST API
+      - ENABLE_ONVIF=true           # Ensures the ONVIF listener turns on
+      - DEBUG=true                  # Optional: Makes tracking connection issues easier
   frigate:
     container_name: frigate
     privileged: true
