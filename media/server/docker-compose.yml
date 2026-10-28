@@ -1,12 +1,11 @@
 services:
   v380-decoder:
-   image: v380decoder:latest  # Tells Portainer to use your locally built image
+    image: v380decoder:latest  # Tells Portainer to use your locally built image
     container_name: v380decoder
     ports:
       - "8555:8554"  # RTSP video stream
       - "8001:8000"  # ONVIF PTZ control port
       - "8081:8080"  # Expose the Web UI on host port 8081
-    # Replace with your actual camera ID, IP, and password below
     command: >
       --id 82697509 
       --username aroaddy@gmail.com 
