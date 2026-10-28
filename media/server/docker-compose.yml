@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     ports:
       - "8555:8554"  # RTSP video stream
-      - "8000:8000"  # ONVIF PTZ control port
+      - "8001:8000"  # ONVIF PTZ control port
       - "8081:8080"  # Expose the Web UI on host port 8081
     environment:
       - CAMERA_ID=82697509
