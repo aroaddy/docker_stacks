@@ -5,12 +5,12 @@ services:
     ports:
       - "8555:8554"  # RTSP video stream
       - "8001:8000"  # ONVIF PTZ control port
-      - "8081:8080"  # Expose the Web UI on host port 8081
+      - "8081:8080"  # Expose the Web UI on host port 8081 # --ip 192.168.100.214
     command: >
       --id 82697509
       --username 82697509
       --password Okai1994
-      --source cloud      # --ip 192.168.100.214
+      --source cloud      
       --enable-onvif
       --enable-api
       --quality sd
