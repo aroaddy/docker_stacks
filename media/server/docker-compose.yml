@@ -1,6 +1,6 @@
 services:
   v380-decoder:
-    build: https://github.com/felipemarques/camera-v380decoder.git
+    image: v380decoder:latest
     container_name: v380-decoder
     restart: unless-stopped
     ports:
