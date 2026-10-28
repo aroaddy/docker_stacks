@@ -1,6 +1,6 @@
 services:
   v380-decoder:
-    image: felipemarques/camera-v380decoder:latest
+    build: https://github.com/felipemarques/camera-v380decoder.git
     container_name: v380-decoder
     restart: unless-stopped
     ports:
@@ -8,6 +8,7 @@ services:
       - "8000:8000"  # ONVIF PTZ control port
       - "8081:8080"  # Expose the Web UI on host port 8081
     environment:
+      - CAMERA_ID=82697509
       - CAMERA_IP=192.168.100.214      
       - CAMERA_PORT=8800            
       - CAMERA_USERNAME=aroaddy@gmail.com
