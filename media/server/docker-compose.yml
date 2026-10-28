@@ -10,7 +10,7 @@ services:
       --id 82697509
       --username 82697509
       --password Okai1994
-      --ip 192.168.100.214
+      --source cloud      # --ip 192.168.100.214
       --enable-onvif
       --enable-api
       --quality sd
