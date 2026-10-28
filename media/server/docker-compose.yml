@@ -1,21 +1,22 @@
 services:
   v380-decoder:
-    image: v380decoder:latest
-    container_name: v380-decoder
-    restart: unless-stopped
+   image: v380decoder:latest  # Tells Portainer to use your locally built image
+    container_name: v380decoder
     ports:
       - "8555:8554"  # RTSP video stream
       - "8001:8000"  # ONVIF PTZ control port
       - "8081:8080"  # Expose the Web UI on host port 8081
-    environment:
-      - CAMERA_ID=82697509
-      - CAMERA_IP=192.168.100.214      
-      - CAMERA_PORT=8800            
-      - CAMERA_USERNAME=aroaddy@gmail.com
-      - CAMERA_PASSWORD=Okai1994
-      - ENABLE_API=true             # 🌟 CRITICAL: Enables the Web UI & REST API
-      - ENABLE_ONVIF=true           # Ensures the ONVIF listener turns on
-      - DEBUG=true                  # Optional: Makes tracking connection issues easier
+    # Replace with your actual camera ID, IP, and password below
+    command: >
+      --id 82697509 
+      --username aroaddy@gmail.com 
+      --password Okai1994 
+      --ip 192.168.100.214 
+      --enable-onvif 
+      --enable-api 
+      --debug
+    restart: always
+    
   frigate:
     container_name: frigate
     privileged: true
