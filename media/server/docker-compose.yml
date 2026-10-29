@@ -14,7 +14,7 @@ services:
       "--output", "rtsp",          # <--- Explicitly forces full audio/video initialization
       "--enable-onvif",
       "--enable-api",
-      "--quality", "hd",
+      "--quality", "sd",
       "--debug"
     ]
     restart: always
