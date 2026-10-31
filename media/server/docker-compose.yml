@@ -28,6 +28,7 @@ services:
     network_mode: host
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128 # Passes the iGPU into the Docker container
+      - /dev/bus/usb/001/008:/dev/bus/usb/001/008
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/Docker/volumes/frigate/config:/config
